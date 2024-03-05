@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TypeScript HTML Example</title>
+    <style>
+        .elevator-container {
+            display: inline-block;
+            margin-right: 20px;
+        }
+        .elevator {
+          display: flex;
+          flex-direction: column;
+        }
+        .floor {
+          width: 100px;
+          height: 50px;
+          border: 1px solid black;
+          text-align: center;
+          line-height: 50px;
+          font-weight: bold;
+          cursor: pointer;
+        }
+        .highlight {
+          background-color: yellow;
+        }
+      </style>
+</head>
+<body>
+    <h1>Welcome to your Building!!!</h1>
+    <div id="elevator-container"></div>
+    <script src="./dist/bundle.js"></script>
+    <script>
+        const manager = new ElevatorManager(10, 4);
+        const delay = (sleep) => new Promise((resolve) => setTimeout(resolve, sleep));
+
+        const run = async() => {
+            const getRandomInt = (min, max) => {
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            };
+
+            const makeRandomRequest = () => {
+                let floor1, floor2;
+                do {
+                    floor1 = getRandomInt(1, 10);
+                    floor2 = getRandomInt(1, 10);
+                } while (floor1 === floor2);
+
+                manager.requestElevator(floor1, floor2);
+            };
+
+            const makeRandomRequests = async (n) => {
+                console.log(`Generating ${n} requests`);
+                for (let i = 0; i < n; i++) {
+                    makeRandomRequest();
+                }
+            };
+
+            const callMultipleRandomRequests = async (times) => {
+                for (let i = 0; i < times; i++) {
+                    await makeRandomRequests(getRandomInt(1, 4));
+                    await delay(5000); // Wait 5 seconds between sets of requests
+                }
+            };
+
+            const n = getRandomInt(2, 3);
+            console.log(`Generate random request for ${n} sets`);
+            await callMultipleRandomRequests(n);
+        };
+
+        run();
+    </script>
+</body>
+</html>
