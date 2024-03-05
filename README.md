@@ -1,14 +1,13 @@
 
 # The Elevators
-
 A simple elevator app written in typescript, plain javascript, css, and html that allows travelling between floors given it's `pickup` and `destination` points.
 
 Browse the `index.html`, this is the starting point of our running application. All script running in the page are based on the content of `/src` folder. 
 
 
-You may customize the number of Elevators and it's floors (*set floor count is same for all elevators*) by change the parameter value of the main ElevatorManager class upon instance creation `new ElevatorManager(n, n)`.
-## Author
+You may customize the number of Elevators and it's floors (*set floor count is same for all elevators*) by changing the parameter value of the main ElevatorManager class upon instance creation `new ElevatorManager(n, n)`.
 
+## Author
 - [@branhamrico](https://github.com/branhamrico)
 
 
@@ -17,7 +16,7 @@ You may customize the number of Elevators and it's floors (*set floor count is s
 - npm or yarn
 - Chosen Terminal
 
-## Installation Instruction
+## Installation and running Instruction
 1. Clone the repository in your desire directory (make sure npm or yarn has access in it).
 2. Install `http-server` globally (`npm install -g http-server`).
 2. Run within the repo directory `npm install` or `yarn install`.
@@ -28,7 +27,7 @@ You may customize the number of Elevators and it's floors (*set floor count is s
 
 
 ## Highlight
-
 - Usage of **Typescript** to our Elevator class and Manager
 - Usage of **async/await** feature
 - Usage of CSS **Flexboxes**
+- Console logging for cchecking the state movement of the elevators
